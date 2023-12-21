@@ -550,6 +550,7 @@ class _RenderProgressBar extends RenderBox {
   /// This is used to update the thumb value and the left time label.
   Duration get progress => _progress;
   Duration _progress = Duration.zero;
+
   set progress(Duration value) {
     final clamp = _clampDuration(value);
     if (_progress == clamp) {
@@ -575,12 +576,14 @@ class _RenderProgressBar extends RenderBox {
   }
 
   TextPainter? _cachedLeftLabel;
+
   Size get _leftLabelSize {
     _cachedLeftLabel ??= _leftTimeLabel();
     return _cachedLeftLabel!.size;
   }
 
   TextPainter? _cachedRightLabel;
+
   Size get _rightLabelSize {
     _cachedRightLabel ??= _rightTimeLabel();
     return _cachedRightLabel!.size;
@@ -621,6 +624,7 @@ class _RenderProgressBar extends RenderBox {
   /// The total time length of the media.
   Duration get total => _total;
   Duration _total;
+
   set total(Duration value) {
     final clamp = (value.isNegative) ? Duration.zero : value;
     if (_total == clamp) {
@@ -639,6 +643,7 @@ class _RenderProgressBar extends RenderBox {
   /// The buffered length of the media when streaming.
   Duration get buffered => _buffered;
   Duration _buffered;
+
   set buffered(Duration value) {
     final clamp = _clampDuration(value);
     if (_buffered == clamp) {
@@ -657,6 +662,7 @@ class _RenderProgressBar extends RenderBox {
   /// A callback for the audio duration position to where the thumb was moved.
   ValueChanged<Duration>? get onSeek => _onSeek;
   ValueChanged<Duration>? _onSeek;
+
   set onSeek(ValueChanged<Duration>? value) {
     if (value == _onSeek) {
       return;
@@ -667,6 +673,7 @@ class _RenderProgressBar extends RenderBox {
   /// A callback when the thumb starts being dragged.
   ThumbDragStartCallback? get onDragStart => _onDragStartUserCallback;
   ThumbDragStartCallback? _onDragStartUserCallback;
+
   set onDragStart(ThumbDragStartCallback? value) {
     if (value == _onDragStartUserCallback) {
       return;
@@ -677,6 +684,7 @@ class _RenderProgressBar extends RenderBox {
   /// A callback when the thumb is being dragged.
   ThumbDragUpdateCallback? get onDragUpdate => _onDragUpdateUserCallback;
   ThumbDragUpdateCallback? _onDragUpdateUserCallback;
+
   set onDragUpdate(ThumbDragUpdateCallback? value) {
     if (value == _onDragUpdateUserCallback) {
       return;
@@ -687,6 +695,7 @@ class _RenderProgressBar extends RenderBox {
   /// A callback when the thumb drag is finished.
   VoidCallback? get onDragEnd => _onDragEndUserCallback;
   VoidCallback? _onDragEndUserCallback;
+
   set onDragEnd(VoidCallback? value) {
     if (value == _onDragEndUserCallback) {
       return;
@@ -697,6 +706,7 @@ class _RenderProgressBar extends RenderBox {
   /// The vertical thickness of the bar that the thumb moves along.
   double get barHeight => _barHeight;
   double _barHeight;
+
   set barHeight(double value) {
     if (_barHeight == value) return;
     _barHeight = value;
@@ -706,6 +716,7 @@ class _RenderProgressBar extends RenderBox {
   /// The color of the progress bar before any playing or buffering.
   Color get baseBarColor => _baseBarColor;
   Color _baseBarColor;
+
   set baseBarColor(Color value) {
     if (_baseBarColor == value) return;
     _baseBarColor = value;
@@ -715,6 +726,7 @@ class _RenderProgressBar extends RenderBox {
   /// The color of the played portion of the progress bar.
   Color get progressBarColor => _progressBarColor;
   Color _progressBarColor;
+
   set progressBarColor(Color value) {
     if (_progressBarColor == value) return;
     _progressBarColor = value;
@@ -724,6 +736,7 @@ class _RenderProgressBar extends RenderBox {
   /// The color of the visible buffered portion of the progress bar.
   Color get bufferedBarColor => _bufferedBarColor;
   Color _bufferedBarColor;
+
   set bufferedBarColor(Color value) {
     if (_bufferedBarColor == value) return;
     _bufferedBarColor = value;
@@ -732,6 +745,7 @@ class _RenderProgressBar extends RenderBox {
 
   BarCapShape get barCapShape => _barCapShape;
   BarCapShape _barCapShape;
+
   set barCapShape(BarCapShape value) {
     if (_barCapShape == value) return;
     _barCapShape = value;
@@ -741,6 +755,7 @@ class _RenderProgressBar extends RenderBox {
   /// The color of the moveable thumb.
   Color get thumbColor => _thumbColor;
   Color _thumbColor;
+
   set thumbColor(Color value) {
     if (_thumbColor == value) return;
     _thumbColor = value;
@@ -750,6 +765,7 @@ class _RenderProgressBar extends RenderBox {
   /// The length of the radius for the circular thumb.
   double get thumbRadius => _thumbRadius;
   double _thumbRadius;
+
   set thumbRadius(double value) {
     if (_thumbRadius == value) return;
     _thumbRadius = value;
@@ -759,6 +775,7 @@ class _RenderProgressBar extends RenderBox {
   /// The color of the pressed-down effect of the moveable thumb.
   Color get thumbGlowColor => _thumbGlowColor;
   Color _thumbGlowColor;
+
   set thumbGlowColor(Color value) {
     if (_thumbGlowColor == value) return;
     _thumbGlowColor = value;
@@ -768,6 +785,7 @@ class _RenderProgressBar extends RenderBox {
   /// The length of the radius of the pressed-down effect of the moveable thumb.
   double get thumbGlowRadius => _thumbGlowRadius;
   double _thumbGlowRadius;
+
   set thumbGlowRadius(double value) {
     if (_thumbGlowRadius == value) return;
     _thumbGlowRadius = value;
@@ -777,6 +795,7 @@ class _RenderProgressBar extends RenderBox {
   /// Whether the thumb will paint before the start or after the end of the bar.
   bool get thumbCanPaintOutsideBar => _thumbCanPaintOutsideBar;
   bool _thumbCanPaintOutsideBar;
+
   set thumbCanPaintOutsideBar(bool value) {
     if (_thumbCanPaintOutsideBar == value) return;
     _thumbCanPaintOutsideBar = value;
@@ -786,6 +805,7 @@ class _RenderProgressBar extends RenderBox {
   /// The position of the duration text labels for the progress and total time.
   TimeLabelLocation get timeLabelLocation => _timeLabelLocation;
   TimeLabelLocation _timeLabelLocation;
+
   set timeLabelLocation(TimeLabelLocation value) {
     if (_timeLabelLocation == value) return;
     _timeLabelLocation = value;
@@ -798,6 +818,7 @@ class _RenderProgressBar extends RenderBox {
   /// negative number. The default is [TimeLabelType.totalTime].
   TimeLabelType get timeLabelType => _timeLabelType;
   TimeLabelType _timeLabelType;
+
   set timeLabelType(TimeLabelType value) {
     if (_timeLabelType == value) return;
     _timeLabelType = value;
@@ -809,6 +830,7 @@ class _RenderProgressBar extends RenderBox {
   /// taken from the theme's [textStyle.bodyText1].
   TextStyle? get timeLabelTextStyle => _timeLabelTextStyle;
   TextStyle? _timeLabelTextStyle;
+
   set timeLabelTextStyle(TextStyle? value) {
     if (_timeLabelTextStyle == value) return;
     _timeLabelTextStyle = value;
@@ -819,6 +841,7 @@ class _RenderProgressBar extends RenderBox {
   /// The length of the radius for the circular thumb.
   double get timeLabelPadding => _timeLabelPadding;
   double _timeLabelPadding;
+
   set timeLabelPadding(double value) {
     if (_timeLabelPadding == value) return;
     _timeLabelPadding = value;
@@ -829,6 +852,7 @@ class _RenderProgressBar extends RenderBox {
   /// By default the value is 1.0.
   double get textScaleFactor => _textScaleFactor;
   double _textScaleFactor;
+
   set textScaleFactor(double value) {
     if (_textScaleFactor == value) return;
     _textScaleFactor = value;
@@ -1084,8 +1108,10 @@ class _RenderProgressBar extends RenderBox {
   }
 
   String _getTimeString(Duration time) {
-    final minutes =
-        time.inMinutes.remainder(Duration.minutesPerHour).toString();
+    final minutes = time.inMinutes
+        .remainder(Duration.minutesPerHour)
+        .toString()
+        .padLeft(2, '0');
     final seconds = time.inSeconds
         .remainder(Duration.secondsPerMinute)
         .toString()
